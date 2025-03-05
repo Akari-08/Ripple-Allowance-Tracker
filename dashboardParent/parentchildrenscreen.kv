@@ -1,0 +1,35 @@
+#:kivy 2.3.1
+
+<ParentChildren>:
+    MDFloatLayout:
+        id:container
+        radius: [0, 0, 0, 0]
+        md_bg_color: 0.10980392156862745, 0.10980392156862745, 0.13725490196078433, 1 # Background color
+        
+        MDTopAppBar:
+            title: "Ripple"
+            radius: [25, 25, 25, 25]
+            md_bg_color: 0.1568627450980392, 0.1568627450980392, 0.2, 1
+            right_action_items: [["cog", lambda x: self.parent.parent.parent.parent.settings()]]
+            elevation: 4
+            pos_hint: {"top": 1}
+
+        MDBottomNavigation:
+            panel_color: 0.1568627450980392, 0.1568627450980392, 0.2, 1  # Panel color
+            pos_hint: {"bottom": 1}  # Ensure the navigation bar is at the bottom
+            text_color_active: 1, 0.4745098039215686, 0.4, 1
+
+            MDBottomNavigationItem:
+                md_bg_color: 0,0,0,0
+                name: 'screen 1'
+                text: 'Children'
+                icon: 'account-child-circle'
+                on_tab_press: root.parent.parent.children_screen_loader()
+
+            MDBottomNavigationItem:
+                md_bg_color: 0,0,0,0
+                name: 'screen 2'
+                text: 'History'
+                icon: 'history'
+                on_tab_press: root.parent.parent.history()
+

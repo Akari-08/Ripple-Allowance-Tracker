@@ -1,0 +1,252 @@
+#:kivy 2.3.1
+
+
+<EmailSignup>:
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.10980392156862745, 0.10980392156862745, 0.13725490196078433, 1  # Background color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Ripple"
+            font_size: 50
+            color: 1, 1, 1, 1
+            font_name: "fonts/K2D/K2D-Bold.ttf"
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {"top": 0.937, "center_x": 0.5}  # Ripple label at the top
+
+        Label:
+            text: "E-mail address"
+            font_size: 18
+            color: 0.4, 0.4, 0.5019607843137255, 1
+            font_name: "fonts/inter/Inter-VariableFont_opsz,wght.ttf"
+            size_hint: None, None
+            pos_hint: {"center_x": 0.18, "y": 0.655}  # Positioned towards the top (y=0.7)
+        
+        Widget:
+            size: 480, 70
+            pos_hint: {"center_x": 0.5, "y": 0.62}
+            source: "images/Rectangle.png"
+            size_hint: None, None
+            background_color: 0, 0, 0, 0  # Transparent background
+            canvas.before:
+                Color:
+                    rgba: 0.2,0.2,0.2235294117647059,1  # Button color
+                RoundedRectangle: 
+                    size: self.size
+                    pos: self.pos
+                    radius: [25]
+        
+        Widget:
+            size: 476, 66
+            pos_hint: {"center_x": 0.5, "y": 0.622}
+            source: "images/Rectangle.png"
+            size_hint: None, None
+            background_color: 0, 0, 0, 0  # Transparent background
+            canvas.before:
+                Color:
+                    rgba: 0.10980392156862745,0.10980392156862745,0.13725490196078433,1  # Button color
+                RoundedRectangle: 
+                    size: self.size
+                    pos: self.pos
+                    radius: [24]
+        
+        TextInput:
+            # hint_text: "E-mail address"
+            id: email_input  # Give the TextInput an ID so it can be accessed
+            foreground_color: 1, 1, 1, 1  # White text color
+            background_color: 0, 0, 0, 0  # Clear background
+            hint_text_color: 1, 1, 1, 0.5  # Semi-transparent white hint text
+            cursor_color: 1, 1, 1, 1  # White cursor
+            font_size: 20
+            size_hint: None, None
+            size: 460, 66
+            pos_hint: {"center_x": 0.5, "y": 0.615}
+            font_name: "fonts/inter/static/Inter_24pt-SemiBold.ttf"
+            padding: [10, 10]  # Padding to adjust text inside the input
+            multiline: False  # Disable multiline input
+
+        Label:
+            text: "Password"
+            font_size: 18
+            color: 0.4, 0.4, 0.5019607843137255, 1
+            font_name: "fonts/inter/Inter-VariableFont_opsz,wght.ttf"
+            size_hint: None, None
+            pos_hint: {"center_x": 0.14, "y": 0.55}  # Positioned towards the top (y=0.7)
+        
+        Widget:
+            size: 480, 70
+            pos_hint: {"center_x": 0.5, "y": 0.515}
+            source: "images/Rectangle.png"
+            size_hint: None, None
+            background_color: 0, 0, 0, 0  # Transparent background
+            canvas.before:
+                Color:
+                    rgba: 0.2,0.2,0.2235294117647059,1  # Button color
+                RoundedRectangle: 
+                    size: self.size
+                    pos: self.pos
+                    radius: [25]
+        
+        Widget:
+            id: back_rectangle_password
+            size: 476, 66
+            pos_hint: {"center_x": 0.5, "y": 0.5165}
+            source: "images/Rectangle.png"
+            size_hint: None, None
+            background_color: 0, 0, 0, 0  # Transparent background
+            canvas.before:
+                Color:
+                    rgba: 0.10980392156862745,0.10980392156862745,0.13725490196078433,1  # Button color
+                RoundedRectangle: 
+                    size: self.size
+                    pos: self.pos
+                    radius: [24]
+        
+        # Password field widget
+        TextInput:
+            id: password_input  # Give the TextInput an ID so it can be accessed
+            foreground_color: 1, 1, 1, 1  # White text color
+            background_color: 0, 0, 0, 0  # Clear background
+            hint_text_color: 1, 1, 1, 0.5  # Semi-transparent white hint text
+            cursor_color: 1, 1, 1, 1  # White cursor
+            font_size: 20
+            size_hint: None, None
+            size: 460, 66
+            pos_hint: {"center_x": 0.5, "y": 0.51}
+            font_name: "fonts/inter/static/Inter_24pt-SemiBold.ttf"
+            padding: [10, 10]  # Padding to adjust text inside the input
+            multiline: False  # Disable multiline input
+            on_text: root.parent.parent.print_password(self.text)
+            password: True  # Hide the password text
+
+        # Strength indicator bars (Horizontal)
+        BoxLayout:
+            id: password_strength_bar  # ID for strength bar container
+            orientation: 'horizontal'
+            size_hint: None, None
+            size: 480, 5
+            pos_hint: {"center_x": 0.5, "y": 0.47}
+            padding: 0, 0
+
+            canvas:
+                Color:
+                    id: bar1_color
+                    rgba: 0.20784313725490197, 0.20784313725490197, 0.25882352941176473, 1  # Default color
+                RoundedRectangle:
+                    id: bar1
+                    size: 115, 7
+                    pos: self.pos
+                    radius: [5, 0, 0, 5]
+                Color:
+                    rgba: 0.20784313725490197, 0.20784313725490197, 0.25882352941176473, 1
+                Rectangle:
+                    id: bar2
+                    size: 115, 7
+                    pos: self.pos[0] + 120, self.pos[1]
+                Color:
+                    rgba: 0.20784313725490197, 0.20784313725490197, 0.25882352941176473, 1
+                Rectangle:
+                    id: bar3
+                    size: 115, 7
+                    pos: self.pos[0] + 240, self.pos[1]
+                Color:
+                    rgba: 0.20784313725490197, 0.20784313725490197, 0.25882352941176473, 1
+                RoundedRectangle:
+                    id: bar4
+                    size: 115, 7
+                    pos: self.pos[0] + 360, self.pos[1]
+                    radius: [0,5,5,0]
+
+
+        Label: 
+            id: test_label
+            text: "Use 8 or more characters with a mix of letters,\n numbers & symbols."
+            markup: True  # Enable markup to use BBCode-like tags
+            font_size: 18
+            color: 0.4, 0.4, 0.5019607843137255, 1
+            font_name: "fonts/inter/Inter-VariableFont_opsz,wght.ttf"
+            size_hint: None, None
+            pos_hint: {"y": 0.39, "center_x": 0.42}
+
+        Button:
+            text: "Get started, it’s free!"
+            font_size: 20
+            size_hint: None, None
+            size: 480, 70
+            pos_hint: {"center_x": 0.5, "y": 0.30}  # Positioned towards bottom (y=0.1) 
+            on_release: root.parent.parent.signup_user(root.ids.email_input.text, root.ids.password_input.text)
+            font_name: "fonts/inter/static/Inter_24pt-SemiBold.ttf"
+            background_color: 0, 0, 0, 0  # Transparent background
+
+            canvas.before:
+                Color:
+                    rgba: 1, 0.4745098039215686, 0.4, 1  # Button color
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [35]
+        
+        Button:
+            size_hint: None, None
+            size: 484, 70
+            pos_hint: {"center_x": 0.499999999, "y": 0.038}  
+            background_color: 0, 0, 0, 0  # Transparent background
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1  # Base color for the gradient (white)
+                Color:
+                    rgba: 1, 1, 1, 1  # Color for the border
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [35]
+                    texture: Gradient.vertical(get_color_from_hex("#4f4f4f"),get_color_from_hex("#1C1C23"))
+
+        Button:
+            size_hint: None, None
+            size: 484, 70
+            pos_hint: {"center_x": 0.49999999999, "y": 0.038}  
+            background_color: 0, 0, 0, 0  # Transparent background
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 0.8  # Base color for the gradient (white)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [35]
+                    texture: Gradient.horizontal(get_color_from_hex("#4f4f4f"),get_color_from_hex("#1C1C23"))
+
+        Label:
+            text: "Do you have already an account?"
+            font_size: 20
+            color: 1, 1, 1, 1  # White color
+            size_hint: None, None  # Disable size hints to manually set the size
+            size: self.texture_size  # Dynamically set the size based on the text
+            font_name: "fonts/inter/static/Inter_24pt-Medium.ttf"
+            pos_hint: {"center_x": 0.5, "y": 0.125}  # Positioned in the center horizontally and 10% from the top vertically
+        
+        Button:
+            text: "Sign In"
+            font_size: 20
+            color: 1,1,1,1
+            size_hint: None, None
+            size: 480, 66
+            pos_hint: {"center_x": 0.5, "y": 0.04}  
+            font_name: "fonts/inter/static/Inter_24pt-SemiBold.ttf"
+            background_color: 0, 0, 0, 0
+            on_release: root.parent.current = "email_login"
+            on_release: print("Sign In button pressed")
+            canvas.before:    
+                Color:
+                    rgba: 0.2,0.2,0.2235294117647059,1  # Button color
+                RoundedRectangle: 
+                    size: self.size
+                    pos: self.pos
+                    radius: [35]
+
+    

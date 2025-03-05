@@ -1,0 +1,79 @@
+#:kivy 2.3.1
+
+<ChildCode>:
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.10980392156862745, 0.10980392156862745, 0.13725490196078433, 1  # Background color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Ripple"
+            font_size: 50
+            color: 1, 1, 1, 1
+            font_name: "fonts/K2D/K2D-Bold.ttf"
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {"top": 0.937, "center_x": 0.5}  # Ripple label at the top
+
+        Label:
+            text: "Parent Code"
+            font_size: 18
+            color: 0.4, 0.4, 0.5019607843137255, 1
+            font_name: "fonts/inter/Inter-VariableFont_opsz,wght.ttf"
+            size_hint: None, None
+            pos_hint: {"center_x": 0.18, "y": 0.655}  # Positioned towards the top (y=0.7)
+        
+        Widget:
+            size: 480, 70
+            pos_hint: {"center_x": 0.5, "y": 0.62}
+            source: "images/Rectangle.png"
+            size_hint: None, None
+            background_color: 0, 0, 0, 0  # Transparent background
+            canvas.before:
+                Color:
+                    rgba: 0.2,0.2,0.2235294117647059,1  # Button color
+                RoundedRectangle: 
+                    size: self.size
+                    pos: self.pos
+                    radius: [25]
+        
+        Widget:
+            size: 476, 66
+            pos_hint: {"center_x": 0.5, "y": 0.622}
+            source: "images/Rectangle.png"
+            size_hint: None, None
+            background_color: 0, 0, 0, 0  # Transparent background
+            canvas.before:
+                Color:
+                    rgba: 0.10980392156862745,0.10980392156862745,0.13725490196078433,1  # Button color
+                RoundedRectangle: 
+                    size: self.size
+                    pos: self.pos
+                    radius: [24]
+        
+        TextInput:
+            id: parent_code  # Give the TextInput an ID so it can be accessed
+            foreground_color: 1, 1, 1, 1  # White text color
+            background_color: 0, 0, 0, 0  # Clear background
+            hint_text_color: 1, 1, 1, 0.5  # Semi-transparent white hint text
+            cursor_color: 1, 1, 1, 1  # White cursor
+            font_size: 20
+            size_hint: None, None
+            size: 460, 66
+            pos_hint: {"center_x": 0.5, "y": 0.615}
+            font_name: "fonts/inter/static/Inter_24pt-SemiBold.ttf"
+            padding: [10, 10]  # Padding to adjust text inside the input
+            multiline: False  # Disable multiline input
+
+        Button:
+            text: "Get started, it’s free!"
+            font_size: 20
+            size_hint: None, None
+            size: 480, 70
+            pos_hint: {"center_x": 0.5, "y": 0.30}  # Positioned towards bottom (y=0.1) 
+            on_release: root.parent.parent.enter_parent_code(root.ids.parent_code.text)
+            font_name: "fonts/inter/static/Inter_24pt-SemiBold.ttf"
+            background_color: 0, 0, 0, 0  # Transparent background

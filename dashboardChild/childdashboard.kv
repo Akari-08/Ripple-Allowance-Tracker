@@ -1,0 +1,120 @@
+#:kivy 2.3.1
+
+<ChildDashboard>:
+    ScreenManager:
+        id: screen_manager
+        Balance:
+            id: children_screen
+            name: 'children_screen'
+
+<ButtonCard>:
+    orientation: 'horizontal'  # Arrange children vertically
+    spacing: 20
+    padding: [140,120,120,-100]  # Reduced padding around the content
+    size_hint_x: None  # Allow the widget to have a custom width
+    size_hint_y: None  # Allow the widget to have a custom height
+    width: self.minimum_width  # Set the width to the minimum required by the children
+    pos_hint: {"center_y": .76}
+
+    MDCard:
+        style: "elevated"
+        orientation: 'vertical'  # Ensure the card arranges its children vertically
+        padding: 10  # Add some padding inside the card
+        spacing: 10  # Reduced spacing between children inside the card
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_x: None
+            width: self.minimum_width
+            padding: [0, 10, 0, -20]  # Reduced padding above the button
+            size_hint_y: None
+            height: 40  # Set a fixed height for the button layout
+
+            MDFillRoundFlatButton:
+                on_release: root.func() if root.func else None  # Print a message when the button is clicked
+                radius: [35]  # Rounded corners
+                md_bg_color: 0.10980392156862745, 0.10980392156862745, 0.13725490196078433, 1  # Button color
+                size_hint_x: None
+                width: 240
+                size_hint_y: None
+                height: 80  # Set a fixed height for the button to make it taller
+                
+                line_color: 1, 1, 1, 0.1  # Red outline color (RGBA format)
+                line_width: 2    # Outline thickness
+
+        # Horizontal layout for the labels
+        MDBoxLayout:
+            id: labels_layout  # Give the layout an ID for reference
+            orientation: 'horizontal'
+            padding: [45, 50, 50, 40 ]
+            spacing: 20
+            size_hint_x: None
+            width: self.minimum_width
+
+            Label:
+                id: first_label
+                text: root.name  # Bind to the first property
+                size_hint_x: None
+                width: self.texture_size[0]  # Set the width to the size of the text
+
+<TransactionCard>:
+    orientation: 'horizontal'  # Arrange children vertically
+    spacing: 20
+    padding: [140, 120, 120, 0]  # Adjusted padding around the content
+    size_hint_x: None  # Allow the widget to have a custom width
+    size_hint_y: None  # Allow the widget to have a custom height
+    width: self.minimum_width  # Set the width to the minimum required by the children
+    pos_hint: {"center_y": .76}
+
+    MDCard:
+        style: "elevated"
+        orientation: 'vertical'  # Ensure the card arranges its children vertically
+        padding: 10  # Add some padding inside the card
+        spacing: 10  # Reduced spacing between children inside the card
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_x: None
+            width: self.minimum_width
+            padding: [0, 10, 0, -20]  # Reduced padding above the button
+            size_hint_y: None
+            height: 40  # Set a fixed height for the button layout
+
+            MDFillRoundFlatButton:
+                radius: [35]  
+                md_bg_color: 0.10980392156862745, 0.10980392156862745, 0.13725490196078433, 1  # Button color
+                size_hint_x: None
+                width: 480
+                size_hint_y: None
+                height: 80  # Set a fixed height for the button to make it taller
+                line_color: 1, 1, 1, 0.1  # Red outline color (RGBA format)
+                line_width: 2    # Outline thickness
+
+        # Horizontal layout for the labels
+        MDBoxLayout:
+            id: labels_layout  # Give the layout an ID for reference
+            orientation: 'horizontal'
+            padding: [45, 50, 50, 30 ]
+            spacing: 20
+            size_hint_x: None
+            width: self.minimum_width
+
+            Label:
+                id: first_label_category
+                text: root.category  # Bind to the first property
+                size_hint_x: None
+                width: self.texture_size[0]  # Set the width to the size of the text
+
+            Label:
+                id: first_label_date
+                text: root.date  # Bind to the first property
+                size_hint_x: None
+                width: self.texture_size[0]  # Set the width to the size of the text
+
+            Label:
+                id: first_label_amount
+                text: root.amount  # Bind to the first property
+                size_hint_x: None
+                width: self.texture_size[0]  # Set the width to the size of the text
+
+

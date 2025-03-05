@@ -1,0 +1,65 @@
+#:kivy 2.3.1
+
+#:import MDRaisedButton kivymd.uix.button.MDRaisedButton
+#:import MDLabel kivymd.uix.label.MDLabel
+#:import MDBoxLayout kivymd.uix.boxlayout.MDBoxLayout
+
+<WelcomeScreen>:
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.10980392156862745, 0.10980392156862745, 0.13725490196078433, 1  # Background color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        # Button:
+        #     text: "click me!"
+        #     on_release: self.parent.parent.parent.parent.change()
+
+        MDLabel:
+            text: "Ripple"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            font_size: 50
+            halign: "center"
+            font_name: "fonts/K2D/K2D-Bold.ttf"
+            size: self.texture_size
+            pos_hint: {"top": 1.4, "center_x": 0.5}  # Position label at the top
+
+        MDLabel:
+            text: "Homo doctus is se semper divitias habet"
+            theme_text_color: "Custom"
+            text_color: 0.7568627450980392, 0.7568627450980392, 0.803921568627451, 1
+            font_size: 19
+            halign: "center"
+            font_name: "fonts/inter/Inter-VariableFont_opsz,wght.ttf"
+            size: self.texture_size
+            pos_hint: {"y": -0.3, "center_x": 0.5}
+
+        MDFillRoundFlatButton:
+            text: "Get Started"  # Button label
+            size_hint_x: .89  # Button width as a percentage of parent width
+            _min_height: 70  # Minimum height of the button
+            _min_width: 480  # Minimum width of the button
+            pos_hint: {"center_x": 0.5, "y": 0.115}  # Center the button horizontally, position near the bottom
+            on_release: root.parent.current = "signup"  # Switch to the "signup" screen when clicked
+            radius: [35]  # Apply rounded corners with a radius of 35
+            md_bg_color: 1, 0.4745098039215686, 0.4, 1  # Background color (RGBA: light red shade)
+
+
+        MDFillRoundFlatButton:
+            text: "I have an account"
+            size_hint_x: .89
+            _min_height: 70
+            _min_width: 480 
+            pos_hint: {"center_x": 0.5, "y": 0.035}  # Center it horizontally
+            on_release: root.parent.current = "email_login"
+            radius: [35]  # Rounded corners
+            md_bg_color: 1, 1, 1, 0.1  # Button color
+        
+        
+
+
+
+

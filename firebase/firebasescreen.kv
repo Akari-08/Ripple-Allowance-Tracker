@@ -1,0 +1,36 @@
+#:kivy 2.3.1 
+
+<FirebaseScreen>:  # Defines the FirebaseScreen class in KV language
+    BoxLayout:
+        orientation: 'vertical'  # Arranges child widgets vertically
+
+    ScreenManager:  # Manages multiple screens and handles navigation between them
+        id: screen_manager  
+
+        WelcomeScreen:  # First screen shown to the user
+            id: welcome_screen
+            name: 'welcome_screen'
+        
+        EmailSignup:  # Screen for signing up with email
+            id: email_signup
+            name: 'email_signup'
+        
+        EmailLogin:  # Screen for logging in with email
+            id: email_login
+            name: 'email_login'
+        
+        Signup:  # General signup screen
+            id: signup 
+            name: 'signup'
+        
+        UserDetails:  # Screen for entering additional user details after signup
+            id: user_details
+            name: 'user_details'
+        
+        ParentChild:  # Screen for selecting a parent or child role
+            id: parent_child
+            name: 'parent_child'
+        
+        ChildCode:  # Screen for entering child code
+            id: child_code
+            name: 'child_code'

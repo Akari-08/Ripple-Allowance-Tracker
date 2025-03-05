@@ -1,0 +1,56 @@
+#:kivy 2.3.1
+
+<ParentChild>:
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.10980392156862745, 0.10980392156862745, 0.13725490196078433, 1  # Background color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Ripple"
+            font_size: 50
+            color: 1, 1, 1, 1
+            font_name: "fonts/K2D/K2D-Bold.ttf"
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {"top": 0.937, "center_x": 0.5}  # Ripple label at the top
+        
+        Button:
+            text: "Parent"  # Text displayed on the button
+            font_size: 20  # Set the font size
+            size_hint: None, None  # Disable automatic resizing
+            size: 480, 70  # Set the fixed size of the button (width, height)
+            pos_hint: {"center_x": 0.5, "y": 0.30}  # Position the button at the center horizontally, slightly above the center
+            on_release: root.parent.parent.parent_role()  # Call the `parent_role` function when clicked
+            font_name: "fonts/inter/static/Inter_24pt-SemiBold.ttf"  # Specify the custom font
+            background_color: 0, 0, 0, 0  # Make the background fully transparent
+
+            canvas.before:
+                Color:
+                    rgba: 1, 0.4745098039215686, 0.4, 1  # Set the button color (red-orange)
+                RoundedRectangle:
+                    size: self.size  # Set size to match the button
+                    pos: self.pos  # Align position with the button
+                    radius: [35]  # Apply rounded corners with a radius of 35
+
+        Button:
+            text: "Child"  # Text displayed on the button
+            font_size: 20  # Set the font size
+            size_hint: None, None  # Disable automatic resizing
+            size: 480, 70  # Set the fixed size of the button
+            pos_hint: {"center_x": 0.5, "y": 0.50}  # Position the button at the center, lower than the "Parent" button
+            on_release: root.parent.parent.child_role()  # Call the `child_role` function when clicked
+            font_name: "fonts/inter/static/Inter_24pt-SemiBold.ttf"  # Specify the custom font
+            background_color: 0, 0, 0, 0  # Make the background fully transparent
+
+            canvas.before:
+                Color:
+                    rgba: 1, 0.4745098039215686, 0.4, 1  # Set the button color (red-orange)
+                RoundedRectangle:
+                    size: self.size  # Set size to match the button
+                    pos: self.pos  # Align position with the button
+                    radius: [35]  # Apply rounded corners with a radius of 35
+
