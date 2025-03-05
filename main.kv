@@ -1,0 +1,15 @@
+#:kivy 2.3.1
+
+ScreenManager:
+    id: screen_manager  # ScreenManager widget that manages different screens
+    FirebaseScreen:  # FirebaseScreen which will handle Firebase-related functionalities
+        id: firebase_screen  # Unique ID for the FirebaseScreen widget
+        name: 'firebase_screen'  # Name used for screen navigation
+
+    ParentDashboard:  # Screen for the parent's dashboard view
+        id: dashboard_parent  # Unique ID for the ParentDashboard widget
+        name: 'dashboard_parent'  # Name used for screen navigation
+
+    ChildDashboard:  # Screen for the child's dashboard view
+        id: dashboard_child  # Unique ID for the ChildDashboard widget
+        name: 'dashboard_child'  # Name used for screen navigation
