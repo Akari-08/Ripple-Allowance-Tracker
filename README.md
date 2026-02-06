@@ -23,7 +23,7 @@ Ubuntu image can be downloaded on Virtualbox if necessary or a ubuntu WSL can be
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/Akari-08/Ripple-Allowance-Tracker.git
-   cd parent-child-finance-app
+   cd Ripple-Allowance-Tracker
    ```
 2. **Deploying the App**
 
